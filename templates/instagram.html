@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>FeedForensiX | Instagram Workspace</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/static/style.css">
+	<script src="/static/script.js" defer></script>
+</head>
+<body class="page page-workspace">
+	<header class="topbar shell">
+		<a class="brand" href="/dashboard">
+			<span class="brand-mark">FFX</span>
+			<span>
+				<strong>FeedForensiX</strong>
+				<small>Instagram module</small>
+			</span>
+		</a>
+
+		<div class="topbar-actions">
+			<a class="button button-ghost" href="/dashboard">Back</a>
+			<a class="button button-ghost" href="/logout">Logout</a>
+		</div>
+	</header>
+
+	<main class="shell workspace-grid">
+		<aside class="surface-card command-card reveal">
+			<div class="section-head">
+				<div>
+					<p class="eyebrow">Investigation panel</p>
+					<h1>Instagram review</h1>
+				</div>
+				<span class="status-tag">active</span>
+			</div>
+
+			<form class="stack-form">
+				<label>
+					Target handle
+					<input type="text" placeholder="@subject_account">
+				</label>
+				<label>
+					Case reference
+					<input type="text" placeholder="Case-041A">
+				</label>
+				<label>
+					Case note
+					<input type="text" placeholder="Brief investigation summary">
+				</label>
+			</form>
+
+			<div class="button-column">
+				<button class="button" type="button">View Profile</button>
+				<button class="button button-ghost" type="button">Capture Posts</button>
+				<button class="button button-ghost" type="button">Open Report</button>
+			</div>
+
+			<div class="simple-list section-gap">
+				<div class="list-row"><span>Status</span><strong>Ready</strong></div>
+				<div class="list-row"><span>Target</span><strong>Not selected</strong></div>
+				<div class="list-row"><span>Export</span><strong>Available</strong></div>
+			</div>
+		</aside>
+
+		<section class="workspace-main">
+			<article class="surface-card reveal">
+				<div class="section-head">
+					<div>
+						<p class="eyebrow">Evidence</p>
+						<h2>Captured items</h2>
+					</div>
+					<span class="signal-pill compact"><span class="signal-dot"></span>No capture yet</span>
+				</div>
+
+				<div class="evidence-grid">
+					<div class="evidence-card highlighted">
+						<span>Profile</span>
+						<strong>Main account snapshot</strong>
+						<p>Header, bio, followers, and following.</p>
+					</div>
+					<div class="evidence-card">
+						<span>Posts</span>
+						<strong>Recent uploads</strong>
+						<p>Collected post screenshots and timestamps.</p>
+					</div>
+					<div class="evidence-card">
+						<span>Notes</span>
+						<strong>Investigator summary</strong>
+						<p>Observations and findings for the current case.</p>
+					</div>
+				</div>
+			</article>
+
+			<div class="dual-grid">
+				<article class="surface-card reveal">
+					<p class="eyebrow">Activity</p>
+					<div class="activity-board mono-list">
+						<div class="activity-line"><span>[INFO] Workspace ready</span><small>00:00</small></div>
+						<div class="activity-line"><span>[WAIT] Enter a target handle</span><small>00:05</small></div>
+						<div class="activity-line"><span>[READY] Report form available</span><small>00:08</small></div>
+					</div>
+				</article>
+
+				<article class="surface-card reveal">
+					<p class="eyebrow">Report</p>
+					<form class="stack-form">
+						<label>
+							Case name
+							<input type="text" placeholder="April account review">
+						</label>
+						<label>
+							Investigator
+							<input type="text" value="{{ session['user'] }}">
+						</label>
+						<label>
+							Summary
+							<textarea placeholder="Add your findings here."></textarea>
+						</label>
+					</form>
+					<button class="button" type="button">Export Investigation</button>
+				</article>
+			</div>
+		</section>
+	</main>
+</body>
+</html>

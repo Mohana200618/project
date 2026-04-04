@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>FeedForensiX | Dashboard</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/static/style.css">
+	<script src="/static/script.js" defer></script>
+</head>
+<body class="page page-dashboard">
+	<header class="topbar shell">
+		<a class="brand" href="/dashboard">
+			<span class="brand-mark">FFX</span>
+			<span>
+				<strong>FeedForensiX</strong>
+				
+			</span>
+		</a>
+
+		<div class="topbar-actions">
+			<div class="user-chip">
+				<span class="user-chip-label">Signed in</span>
+				<strong>{{ session['user'] }}</strong>
+			</div>
+			<a class="button button-ghost" href="/logout">Logout</a>
+		</div>
+	</header>
+
+	<main class="shell dashboard-stack">
+		<section class="platform-grid">
+			<article class="platform-card primary reveal">
+				<div class="platform-head">
+					<img class="social-logo-image" src="/static/icons/instagram.svg" alt="Instagram logo">
+					<div>
+						<h2>Instagram</h2>
+					</div>
+				</div>
+				<p>Open the investigation workspace for profile review, capture, and reporting.</p>
+				<a class="button" href="/platforms/instagram">Open Page</a>
+			</article>
+
+			<article class="platform-card reveal">
+				<div class="platform-head">
+					<img class="social-logo-image" src="/static/icons/facebook.svg" alt="Facebook logo">
+					<div>
+						<h2>Facebook</h2>
+					</div>
+				</div>
+				<p>Reserved for a future investigation module.</p>
+				<a class="button button-ghost" href="/platforms/facebook">Open Page</a>
+			</article>
+
+			<article class="platform-card reveal">
+				<div class="platform-head">
+					<img class="social-logo-image" src="/static/icons/x.svg" alt="X logo">
+					<div>
+						<h2>X / Twitter</h2>
+					</div>
+				</div>
+				<p>Reserved for a future investigation module.</p>
+				<a class="button button-ghost" href="/platforms/x">Open Page</a>
+			</article>
+		</section>
+
+		<section class="platform-grid platform-grid-secondary">
+			<article class="platform-card reveal">
+				<div class="platform-head">
+					<img class="social-logo-image" src="/static/icons/youtube.svg" alt="YouTube logo">
+					<div>
+						<h2>YouTube</h2>
+					</div>
+				</div>
+				<p>Reserved for channel and video investigation workflows.</p>
+				<a class="button button-ghost" href="/platforms/youtube">Open Page</a>
+			</article>
+
+			<article class="platform-card reveal">
+				<div class="platform-head">
+					<img class="social-logo-image" src="/static/icons/telegram.svg" alt="Telegram logo">
+					<div>
+						<h2>Telegram</h2>
+					</div>
+				</div>
+				<p>Reserved for channel and public group investigation workflows.</p>
+				<a class="button button-ghost" href="/platforms/telegram">Open Page</a>
+			</article>
+		</section>
+	</main>
+</body>
+</html>

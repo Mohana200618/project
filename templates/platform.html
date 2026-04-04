@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeedForensiX | {{ platform.name }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js" defer></script>
+</head>
+<body class="page page-platform" data-auth-open="{{ auth_mode }}">
+    <header class="topbar shell">
+        <a class="brand" href="/">
+            <span class="brand-mark">FFX</span>
+            <span>
+                <strong>FeedForensiX</strong>
+                <small>{{ platform.name }} page</small>
+            </span>
+        </a>
+
+        <div class="topbar-actions">
+            <a class="button button-ghost" href="/">Home</a>
+            {% if session.get('user') %}
+            <a class="button button-ghost" href="/dashboard">Dashboard</a>
+            {% else %}
+            <button class="button button-ghost" type="button" onclick="openAuth('login')">Login</button>
+            {% endif %}
+        </div>
+    </header>
+
+    <main class="shell platform-page-stack">
+        <section class="surface-card platform-page-hero reveal">
+            <div class="platform-page-head">
+                <img class="platform-page-logo" src="{{ platform.logo }}" alt="{{ platform.name }} logo">
+                <div>
+                    <h1>{{ platform.name }}</h1>
+                    <p class="hero-text">{{ platform.tagline }}</p>
+                </div>
+            </div>
+
+            <p class="platform-page-description">{{ platform.description }}</p>
+        </section>
+
+        <section class="content-grid two-column platform-login-layout">
+            <article class="surface-card section-card reveal">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">{{ platform.name }} login</p>
+                        <h2>Enter known credentials</h2>
+                    </div>
+                </div>
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    <div class="auth-messages inline-auth-messages">
+                        {% for category, message in messages %}
+                        <div class="flash-message flash-{{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                {% endwith %}
+
+                <form action="{{ url_for('platform_login', platform_key=request.view_args['platform_key']) }}" method="POST" class="stack-form">
+                    <label>
+                        Username or email
+                        <input name="platform_username" placeholder="Enter {{ platform.name }} username or email" required>
+                    </label>
+                    <label>
+                        Password
+                        <input name="platform_password" type="password" placeholder="Enter password" required>
+                    </label>
+                    <div class="hero-actions">
+                        <button class="button" type="submit">Login</button>
+                        <a class="button button-ghost" href="/">Back to Home</a>
+                    </div>
+                </form>
+            </article>
+
+            <article class="surface-card section-card reveal">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Access</p>
+                        <h2>Current platform session</h2>
+                    </div>
+                </div>
+
+                <div class="simple-list">
+                    <div class="list-row"><span>Platform</span><strong>{{ platform.name }}</strong></div>
+                    <div class="list-row"><span>Connected account</span><strong>{{ platform_account or 'Not connected' }}</strong></div>
+                    <div class="list-row"><span>Destination</span><strong>{{ platform.external_url }}</strong></div>
+                </div>
+
+                <div class="hero-actions section-gap">
+                    {% if platform_account %}
+                    <a class="button" href="{{ platform.external_url }}">Open App</a>
+                    {% else %}
+                    <button class="button button-ghost" type="button" disabled>Login first</button>
+                    {% endif %}
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <div id="authModal" class="modal-shell" aria-hidden="true">
+        <div class="modal-card">
+            <button class="modal-close" type="button" onclick="closeAuth()">&times;</button>
+
+            <div class="auth-toggle">
+                <button id="loginTab" class="tab-button active" type="button" onclick="showAuthPanel('login')">Login</button>
+                <button id="registerTab" class="tab-button" type="button" onclick="showAuthPanel('register')">Register</button>
+            </div>
+
+            <section id="loginPanel" class="auth-panel active">
+                <h2>Login</h2>
+                <p>Enter your username and password.</p>
+                <form action="/login" method="POST" class="auth-form">
+                    <input type="hidden" name="next" value="{{ platform.workspace_route or request.path }}">
+                    <input type="hidden" name="origin" value="{{ request.path }}">
+                    <label>
+                        Username or email
+                        <input name="username" placeholder="analyst@unit.local" required>
+                    </label>
+                    <label>
+                        Password
+                        <input name="password" type="password" placeholder="••••••••" required>
+                    </label>
+                    <button class="button" type="submit">Login</button>
+                </form>
+            </section>
+
+            <section id="registerPanel" class="auth-panel">
+                <h2>Register</h2>
+                <p>Create an account to continue.</p>
+                <form action="/do_register" method="POST" class="auth-form">
+                    <input type="hidden" name="origin" value="{{ request.path }}">
+                    <label>
+                        Full name
+                        <input name="name" placeholder="Investigator name" required>
+                    </label>
+                    <label>
+                        Email
+                        <input name="email" type="email" placeholder="name@agency.local" required>
+                    </label>
+                    <label>
+                        Username
+                        <input name="username" placeholder="case.operator" required>
+                    </label>
+                    <label>
+                        Password
+                        <input name="password" type="password" placeholder="Create password" required>
+                    </label>
+                    <button class="button" type="submit">Register</button>
+                </form>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

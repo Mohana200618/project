@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeedForensiX | Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js" defer></script>
+</head>
+<body class="page page-home" data-auth-open="{{ auth_mode }}">
+    <header class="topbar shell">
+        <a class="brand" href="/">
+            <span class="brand-mark">FFX</span>
+            <span>
+                <strong>FeedForensiX</strong>
+                
+            </span>
+        </a>
+
+        <div class="topbar-actions">
+            <button class="button button-ghost" type="button" onclick="openAuth('login')">Login</button>
+        </div>
+    </header>
+
+    <main class="shell home-stack">
+        <section class="home-hero surface-card reveal">
+            <p class="eyebrow">FeedForensiX</p>
+            <h1>Digital investigation and evidence review.</h1>
+            <p class="hero-text">Use the sections below to understand the tool, review security guidance, browse supported social platforms, and access generated reports.</p>
+
+            <div class="home-menu">
+                <button class="button home-nav-button active" type="button" data-home-target="about">About</button>
+                <button class="button button-ghost home-nav-button" type="button" data-home-target="security">Privacy and Security</button>
+                <button class="button button-ghost home-nav-button" type="button" data-home-target="social-media">Social Media</button>
+                <button class="button button-ghost home-nav-button" type="button" data-home-target="reports">Documentation Report</button>
+            </div>
+        </section>
+
+        <section id="about" class="surface-card section-card home-panel reveal active" data-home-panel>
+            <div class="section-head">
+                <div>
+                    <p class="eyebrow">About</p>
+                    <h2>What the tool does</h2>
+                </div>
+            </div>
+            <div class="content-grid two-column">
+                <div class="content-block">
+                    <p>FeedForensiX is a forensic investigation tool for reviewing social media accounts, preserving visible evidence, and preparing documentation for a case.</p>
+                    <p>The workflow starts from the dashboard after login. Investigators select a platform, enter the target account details, review the content, and prepare report data from the same workspace.</p>
+                </div>
+                <div class="content-block">
+                    <p>The tool is intended to keep the process organized by separating the main steps into platform selection, evidence review, activity notes, and report preparation.</p>
+                    <p>This first version focuses on the home page and report access. The deeper capture and export functions can be expanded next.</p>
+                </div>
+            </div>
+            <div class="feature-inline-grid">
+                <div class="info-chip"><span>Case setup</span><strong>Create and track investigation context</strong></div>
+                <div class="info-chip"><span>Evidence review</span><strong>Collect profile and post details in one flow</strong></div>
+                <div class="info-chip"><span>Report access</span><strong>Keep generated files available for download</strong></div>
+            </div>
+        </section>
+
+        <section id="security" class="surface-card section-card home-panel reveal" data-home-panel hidden>
+            <div class="section-head">
+                <div>
+                    <p class="eyebrow">Privacy and Security</p>
+                    <h2>Investigation security policies</h2>
+                </div>
+            </div>
+            <div class="policy-list">
+                <div class="policy-item">
+                    <strong>Authorized use only</strong>
+                    <p>Use the tool only for approved investigations and documented case work.</p>
+                </div>
+                <div class="policy-item">
+                    <strong>Protect credentials</strong>
+                    <p>Do not share login access, and keep operator credentials private.</p>
+                </div>
+                <div class="policy-item">
+                    <strong>Preserve evidence integrity</strong>
+                    <p>Do not edit collected evidence after capture. Preserve original context and timestamps.</p>
+                </div>
+                <div class="policy-item">
+                    <strong>Restrict report access</strong>
+                    <p>Download reports only when needed and store them in approved case folders.</p>
+                </div>
+            </div>
+            <div class="security-checklist">
+                <div class="check-row"><span class="check-dot"></span><span>Verify case authority before collecting account data.</span></div>
+                <div class="check-row"><span class="check-dot"></span><span>Record timestamps for every evidence review and export action.</span></div>
+                <div class="check-row"><span class="check-dot"></span><span>Store downloaded reports only in approved investigation storage.</span></div>
+            </div>
+        </section>
+
+        <section id="social-media" class="surface-card section-card home-panel reveal" data-home-panel hidden>
+            <div class="section-head">
+                <div>
+                    <p class="eyebrow">Social Media</p>
+                    <h2>Supported and planned platforms</h2>
+                </div>
+            </div>
+            <div class="social-grid">
+                <div class="social-card social-card-detailed active-platform">
+                    <img class="social-logo-image" src="/static/icons/instagram.svg" alt="Instagram logo">
+                    <div class="social-card-copy">
+                        <strong>Instagram</strong>
+                        <p>Available now for profile review, evidence capture, and report preparation.</p>
+                    </div>
+                    <a class="button" href="/platforms/instagram">Open</a>
+                </div>
+                <div class="social-card social-card-detailed">
+                    <img class="social-logo-image" src="/static/icons/facebook.svg" alt="Facebook logo">
+                    <div class="social-card-copy">
+                        <strong>Facebook</strong>
+                        <p>Planned for future analysis and evidence workflows.</p>
+                    </div>
+                    <a class="button button-ghost" href="/platforms/facebook">Open</a>
+                </div>
+                <div class="social-card social-card-detailed">
+                    <img class="social-logo-image" src="/static/icons/x.svg" alt="X logo">
+                    <div class="social-card-copy">
+                        <strong>X / Twitter</strong>
+                        <p>Planned for timeline review and post collection.</p>
+                    </div>
+                    <a class="button button-ghost" href="/platforms/x">Open</a>
+                </div>
+                <div class="social-card social-card-detailed">
+                    <img class="social-logo-image" src="/static/icons/youtube.svg" alt="YouTube logo">
+                    <div class="social-card-copy">
+                        <strong>YouTube</strong>
+                        <p>Reserved for channel and video review in a later release.</p>
+                    </div>
+                    <a class="button button-ghost" href="/platforms/youtube">Open</a>
+                </div>
+                <div class="social-card social-card-detailed">
+                    <img class="social-logo-image" src="/static/icons/telegram.svg" alt="Telegram logo">
+                    <div class="social-card-copy">
+                        <strong>Telegram</strong>
+                        <p>Reserved for channel and public group evidence review.</p>
+                    </div>
+                    <a class="button button-ghost" href="/platforms/telegram">Open</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="reports" class="surface-card section-card home-panel reveal" data-home-panel hidden>
+            <div class="section-head">
+                <div>
+                    <p class="eyebrow">Documentation Report</p>
+                    <h2>Generated reports</h2>
+                </div>
+            </div>
+            <div class="report-toolbar">
+                <input id="reportSearch" type="text" placeholder="Search reports by file name">
+            </div>
+            <div class="report-list">
+                {% if report_files %}
+                    {% for report in report_files %}
+                    <div class="report-item" data-report-name="{{ report|lower }}">
+                        <div>
+                            <strong>{{ report }}</strong>
+                            <p>Available for download from the report archive.</p>
+                        </div>
+                        <a class="button" href="{{ url_for('download_report', filename=report) }}">Download</a>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="empty-state" id="emptyReportState">
+                        <strong>No reports available</strong>
+                        <p>Generated reports will appear here and can be downloaded when needed.</p>
+                    </div>
+                {% endif %}
+            </div>
+            {% if report_files %}
+            <div class="empty-state report-search-empty" id="reportSearchEmpty" hidden>
+                <strong>No matching reports</strong>
+                <p>Try a different file name or clear the search field.</p>
+            </div>
+            {% endif %}
+        </section>
+    </main>
+
+    <div id="authModal" class="modal-shell" aria-hidden="true">
+        <div class="modal-card">
+            <button class="modal-close" type="button" onclick="closeAuth()">&times;</button>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                <div class="auth-messages">
+                    {% for category, message in messages %}
+                    <div class="flash-message flash-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            {% endwith %}
+
+            <div class="auth-toggle">
+                <button id="loginTab" class="tab-button active" type="button" onclick="showAuthPanel('login')">Login</button>
+                <button id="registerTab" class="tab-button" type="button" onclick="showAuthPanel('register')">Register</button>
+            </div>
+
+            <section id="loginPanel" class="auth-panel active">
+                <h2>Login</h2>
+                <p>Enter your username and password.</p>
+                <form action="/login" method="POST" class="auth-form">
+                    <input type="hidden" name="next" value="/dashboard">
+                    <input type="hidden" name="origin" value="/">
+                    <label>
+                        Username or email
+                        <input name="username" placeholder="analyst@unit.local" required>
+                    </label>
+                    <label>
+                        Password
+                        <input name="password" type="password" placeholder="••••••••" required>
+                    </label>
+                    <button class="button" type="submit">Login</button>
+                </form>
+            </section>
+
+            <section id="registerPanel" class="auth-panel">
+                <h2>Register</h2>
+                <p>Create an account to continue.</p>
+                <form action="/do_register" method="POST" class="auth-form">
+                    <input type="hidden" name="origin" value="/">
+                    <label>
+                        Full name
+                        <input name="name" placeholder="Investigator name" required>
+                    </label>
+                    <label>
+                        Email
+                        <input name="email" type="email" placeholder="name@agency.local" required>
+                    </label>
+                    <label>
+                        Username
+                        <input name="username" placeholder="case.operator" required>
+                    </label>
+                    <label>
+                        Password
+                        <input name="password" type="password" placeholder="Create password" required>
+                    </label>
+                    <button class="button" type="submit">Register</button>
+                </form>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
